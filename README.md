@@ -1,13 +1,20 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+<p align="center"><img src="https://www.filepicker.io/api/file/PrjQ7ZxTQye3aR2Tzt3N" width="400"></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Laravel Boolpress Project
 
-## About Laravel
+In questa repo noi della Classe #56 del corso per Full Stack Web Developers di Boolean Careers abbiamo l'obiettivo di creare un CMS per la gestione di posts con la possibilità di registrarsi come utenti e accedere ad ulteriori funzionalità (creazione/editing/rimozione dei posts).
+
+Il progetto è stato creato utilizzando la [versione 7.0 di Laravel](https://laravel.com/docs/7.x).
+
+Dopo aver clonato la repo in locale e importata in un nuovo progetto all'interno del proprio editor di codice (ad esempio, VSCode) , i passi da eseguire per poterci lavorare sono i seguenti:
+
+1. All'interno del terminale:
+    - <code>composer install</code>
+    - <code>npm install</code>
+    - <code>cp .env.example .env</code>
+    - <code>php artisan key:generate</code>
+    - <code>npm install bootstrap</code>
+
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
