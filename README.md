@@ -14,6 +14,15 @@ Dopo aver clonato la repo in locale e importata in un nuovo progetto all'interno
     - <code>cp .env.example .env</code>
     - <code>php artisan key:generate</code>
     - <code>npm install bootstrap</code>
+    - <code>composer remove fzaninotto/faker</code>
+    - <code>composer require fakerphp/faker</code>
+    - <code>composer require laravel/ui:^2.4</code>
+    - <code>npm run watch</code> (Se non funziona verificare che sia presente la cartella "node_modules"; in caso contrario lanciare nuovamente <code>npm install</code>)
+    - <code>php artisan serve</code>
+1. Database:
+    - su phpMyAdmin creare un nuovo database;
+    - nel file .env inserire il nome del database creato alla voce "DB_DATABASE=...";
+    - nel file .env aggiornare in base alle proprie impostazioni tutti gli altri campi del database (DB_PORT, DB_USERNAME, DB_PASSWORD)
 
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
