@@ -7,6 +7,12 @@ use Illuminate\Support\Str;
 
 class Post extends Model
 {
+    // Funzione per usare lo slug nell'url della funzione show
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     protected $fillable = ['title', 'image', 'content', 'slug'];
 
     // La funzione generateSlug creata a lezione funziona e non saprei come farla diversamente :-)

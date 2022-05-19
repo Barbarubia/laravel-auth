@@ -49,7 +49,7 @@
                     <p>{{ date('d/m/Y', strtotime($post->updated_at)) }}</p>
                 </div>
                 <div class="col-3">
-                    <a class="btn btn-primary" href="{{ route('admin.posts.show', $post->id) }}"><i class="fa-solid fa-eye"></i></a>
+                    <a class="btn btn-primary" href="{{ route('admin.posts.show', $post->slug) }}"><i class="fa-solid fa-eye"></i></a>
                     <a class="btn btn-primary" href="{{ route('admin.posts.edit', $post->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
                     <button class="btn btn-danger btn-delete" data-id="{{ $post->id }}"><i class="fa-solid fa-trash-can"></i></button>
                 </div>
