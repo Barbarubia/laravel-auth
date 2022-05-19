@@ -16,6 +16,7 @@ class Post extends Model
     protected $fillable = ['title', 'image', 'content', 'slug'];
 
     // La funzione generateSlug creata a lezione funziona e non saprei come farla diversamente :-)
+    // TODO: creare lo slug e aggiungere alla fine l'id del post
     static public function generateSlug($stringToSlug) {
         $baseSlug = Str::of($stringToSlug)->slug('-');
         $slug = $baseSlug;
