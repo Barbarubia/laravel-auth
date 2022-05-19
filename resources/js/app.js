@@ -76,6 +76,7 @@ if (titleForm) {
             stringToSlug: titleInput,
         })
             .then(function (response) {
+                console.log(response)
                 eleSlug.value = response.data.slug;
             })
     });
