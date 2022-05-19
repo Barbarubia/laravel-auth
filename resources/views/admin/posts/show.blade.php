@@ -4,6 +4,12 @@
 
 @section('content')
     <div class="container">
+        @if (session('created'))
+            <div class="alert alert-success">{{ session('created') }}</div>
+        @endif
+        @if (session('modified'))
+            <div class="alert alert-success">{{ session('modified') }}</div>
+        @endif
         <div class="row">
             <div class="col">
                 <h1>{{ $post->title }}</h1>
@@ -18,7 +24,7 @@
                     <img src="{{ $post->image }}" alt="{{ $post->title }}">
                 @endif
 
-                <p>{{ $post->content }}<</p>
+                <p>{{ $post->content }}</p>
             </div>
         </div>
     </div>
