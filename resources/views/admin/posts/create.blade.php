@@ -37,7 +37,8 @@
                         @enderror
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Create post</button>
+                    <button type="submit" class="btn btn-success">Create post</button>
+                    <a href="{{ url()->previous() }}" class="btn btn-primary fw-bold">Go Back</a>
                 </form>
             </div>
         </div>
