@@ -18,7 +18,7 @@ class Post extends Model
     // La funzione generateSlug creata a lezione funziona e non saprei come farla diversamente :-)
     // TODO: creare lo slug e aggiungere alla fine l'id del post
     static public function generateSlug($stringToSlug) {
-        $baseSlug = Str::of($stringToSlug)->slug('-');
+        $baseSlug = Str::of($stringToSlug)->slug('-')->__toString();
         $slug = $baseSlug;
         $_i = 1;
         while(self::where('slug', $slug)->first()) {
