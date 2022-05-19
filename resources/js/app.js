@@ -4,6 +4,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+const { default: Axios } = require('axios');
+
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -57,4 +59,24 @@ if (showPopup) {
         showPopup.classList.add('d-none');
     });
 
+}
+
+
+/*
+AUTOCOMPILAZIONE SLUG NEL FORM DI CREAZIONE POST
+*/
+
+const titleForm = document.getElementById('title');
+if (titleForm) {
+    titleForm.addEventListener('keyup', function() {
+        const eleSlug = document.getElementById('slug');
+        const titleInput = titleForm.value;
+
+        Axios.post('/admin/slugger', {
+            stringToSlug: titleInput,
+        })
+            .then(function (response) {
+                eleSlug.value = response.data.slug;
+            })
+    });
 }

@@ -49773,6 +49773,9 @@ module.exports = function(module) {
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+var _require = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"),
+    Axios = _require["default"];
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
@@ -49817,6 +49820,24 @@ if (showPopup) {
   btnNo.addEventListener('click', function () {
     confirmationForm.action = '';
     showPopup.classList.add('d-none');
+  });
+}
+/*
+AUTOCOMPILAZIONE SLUG NEL FORM DI CREAZIONE POST
+*/
+
+
+var titleForm = document.getElementById('title');
+
+if (titleForm) {
+  titleForm.addEventListener('keyup', function () {
+    var eleSlug = document.getElementById('slug');
+    var titleInput = titleForm.value;
+    Axios.post('/admin/slugger', {
+      stringToSlug: titleInput
+    }).then(function (response) {
+      eleSlug.value = response.data.slug;
+    });
   });
 }
 
