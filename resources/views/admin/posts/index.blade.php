@@ -10,6 +10,11 @@
                 <h1>Admin Control Panel</h1>
             </div>
         </div>
+        <div class="row mb-5">
+            <div class="col d-flex justify-content-end">
+                <a href="{{ route('admin.posts.create') }}" class="btn btn-primary">Add a new post</a>
+            </div>
+        </div>
         <div class="row bg-success">
             <div class="col-1 border-right">
                 <h6>#id</h6>

@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    protected $validationParameters = [
+        'title'     => 'required|max:100',
+        'image'     => 'url|max:250',
+        'content'   => 'required',
+        'slug'      => 'required|unique:posts|max:104'
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +34,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return  view('admin.posts.create');
     }
 
     /**
@@ -38,7 +45,17 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validazione dei dati inseriti
+        $request->validate($this->validationParameters);
+
+        // Variabile inputForm per richiedere tutti i dati inseriti nel form della pagina posts.create
+        $inputForm = $request->all();
+
+        // Creazione della nuova riga nel database con i dati inseriti nel form
+        $newPost = Post::create($inputForm);
+
+        // Redirect al post creato
+        return redirect()->route('admin.posts.show', $newPost->slug);
     }
 
     /**
