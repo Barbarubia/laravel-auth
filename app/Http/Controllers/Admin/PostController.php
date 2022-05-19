@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PostController extends Controller
 {
     protected $validationParameters = [
         'title'     => 'required|max:100',
-        'image'     => 'url|max:250',
+        'image'     => 'nullable|url|max:250',
         'content'   => 'required',
         'slug'      => 'required|unique:posts|max:105'
     ];
@@ -55,7 +56,7 @@ class PostController extends Controller
         $newPost = Post::create($inputForm);
 
         // Redirect al post creato
-        return redirect()->route('admin.posts.show', $newPost->slug);
+        return redirect()->route('admin.posts.show', $newPost->slug)->with('created', 'Post created with success!');;
     }
 
     /**
@@ -77,7 +78,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**
@@ -89,7 +90,22 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        // Validazione dei dati del form modificati ignorando la proprietà "unique" dello slug solo per la risorsa selezionata
+        $this->validationParameters['slug'] = [
+            'required',
+            Rule::unique('posts')->ignore($post),
+            'max:105'
+        ];
+
+        $request->validate($this->validationParameters);
+
+        // Modifica dei dati nel database
+        $inputForm = $request->all();
+
+        $post->update($inputForm);
+
+        // Reindirizzamento alla pagina del post
+        return redirect()->route('admin.posts.show', $post->slug)->with('modified', 'Post modified with success!');
     }
 
     /**
