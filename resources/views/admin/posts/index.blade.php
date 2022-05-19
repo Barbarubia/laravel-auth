@@ -5,6 +5,11 @@
 @section('content')
 
     <div class="container">
+
+        @if (session('deleted'))
+            <div class="alert alert-danger">{{ session('deleted') }}</div>
+        @endif
+
         <div class="row">
             <div class="col">
                 <h1>Admin Control Panel</h1>
@@ -56,7 +61,7 @@
                 <div class="col-3 d-flex flex-wrap justify-content-between align-items-center border py-1">
                     <a class="btn btn-primary" href="{{ route('admin.posts.show', $post->slug) }}"><i class="fa-solid fa-eye"></i> View</a>
                     <a class="btn btn-primary" href="{{ route('admin.posts.edit', $post->slug) }}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
-                    <button class="btn btn-danger btn-delete" data-id="{{ $post->id }}"><i class="fa-solid fa-trash-can"></i> Delete</button>
+                    <button class="btn btn-danger btn-delete" data-slug="{{ $post->slug }}"><i class="fa-solid fa-trash-can"></i> Delete</button>
                 </div>
             </div>
         @endforeach
@@ -67,6 +72,21 @@
             </div>
         </div>
 
+        {{-- POPUP ELIMINAZIONE POST --}}
+        <section id="show-popup" class="overlay d-none">
+            <div class="popup">
+                <h1>You're deleting this post. Are you sure?</h1>
+                <div class="d-flex justify-content-center">
+                    <button id="btn-no" class="btn btn-primary mr-3">NO</button>
+                    <form method="POST" data-base="{{ route('admin.posts.destroy', '*****') }}">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger">YES</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        {{-- FINE POPUP ELIMINAZIONE POST --}}
     </div>
 
 @endsection

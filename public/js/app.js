@@ -49796,6 +49796,29 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app'
 });
+/*
+BOTTONE PER ELIMINARE I POST NELLA PAGINA ADMIN/POSTS
+Alla pressione si rende visibile il popup, il quale contiene il vero bottone per eliminare il post
+*/
+
+var showPopup = document.getElementById('show-popup');
+
+if (showPopup) {
+  var confirmationForm = showPopup.querySelector('form'); // Al click sul bottone delete mostro il popup (rimuovendo il display:none) e modifico il link dell'action destroy
+
+  document.querySelectorAll('.btn-delete').forEach(function (button) {
+    button.addEventListener('click', function () {
+      confirmationForm.action = confirmationForm.dataset.base.replace('*****', this.dataset.slug);
+      showPopup.classList.remove('d-none');
+    });
+  }); // Al click sul no chiudo il popup (rimettendo il display:none) e ricodifico il link del destroy
+
+  var btnNo = document.querySelector('#btn-no');
+  btnNo.addEventListener('click', function () {
+    confirmationForm.action = '';
+    showPopup.classList.add('d-none');
+  });
+}
 
 /***/ }),
 
