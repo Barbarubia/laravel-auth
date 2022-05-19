@@ -27,5 +27,10 @@
                 <p>{{ $post->content }}</p>
             </div>
         </div>
+        <div class="row mt-3">
+            <div class="col">
+                <a href="{{ route('admin.posts.index') }}" class="btn btn-primary fw-bold">Return to posts'index</a>
+            </div>
+        </div>
     </div>
 @endsection
