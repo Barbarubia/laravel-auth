@@ -12,7 +12,7 @@ class PostController extends Controller
         'title'     => 'required|max:100',
         'image'     => 'url|max:250',
         'content'   => 'required',
-        'slug'      => 'required|unique:posts|max:104'
+        'slug'      => 'required|unique:posts|max:105'
     ];
 
     /**
